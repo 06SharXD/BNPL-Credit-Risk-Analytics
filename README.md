@@ -1,165 +1,140 @@
 # BNPL Credit Risk & Conversion Analytics
 
-A Business Analytics and Machine Learning project focused on **Buy Now, Pay Later (BNPL)** customer risk, default prediction, and conversion analysis.
+This project looks at **Buy Now, Pay Later (BNPL)** customer data to understand two things: who is more likely to default and what customer factors are related to that risk.
 
-The project combines **Python, SQL, Excel, Power BI, and machine learning** to transform customer and transaction data into business insights that can support credit-risk and checkout decisions.
+I worked on the project from both a **data/ML** and **business analysis** perspective, using Python, SQL, Excel and Power BI.
 
-## Business Problem
+## What was the problem?
 
-BNPL platforms need to balance two objectives:
+A BNPL company wants to grow its customer base without taking on unnecessary credit risk.
 
-- Increase customer conversion and successful checkout completion.
-- Control credit losses by identifying customers who are likely to default.
+So the main questions I wanted to answer were:
 
-The objective of this project is to analyze customer characteristics and behavioral data, identify the major drivers of default risk, and build a predictive model that can help prioritize risk-sensitive decisions.
+- Which customer factors are related to default?
+- Can we build a model to identify customers who may be at higher risk?
+- Which metrics should be used to judge the model?
+- How can the results be presented clearly to a business team?
 
-## Project Objectives
+## What I did
 
-1. Clean and prepare BNPL customer data.
-2. Perform exploratory and business-focused data analysis.
-3. Use SQL for structured data analysis and querying.
-4. Identify factors associated with customer default.
-5. Build a classification model for default prediction.
-6. Evaluate the model using precision, recall, F1-score, and accuracy.
-7. Develop a Power BI dashboard for business reporting and decision support.
-8. Document the requirements and process using BRD/FRD documentation.
+1. Cleaned and prepared the BNPL dataset.
+2. Explored the data to understand customer and default patterns.
+3. Used SQL/SQLite to perform structured analysis.
+4. Prepared features for a classification model.
+5. Built and evaluated a default prediction model.
+6. Looked at the main factors contributing to predicted risk.
+7. Prepared data for a Power BI dashboard.
+8. Documented the business requirements using BRD/FRD documentation.
 
-## Technology Stack
+## Tools used
 
-| Area | Tools |
-|---|---|
-| Programming | Python |
-| Data Analysis | Pandas, NumPy |
-| Visualization | Matplotlib, Power BI |
-| Database / Querying | SQL, SQLite |
-| Machine Learning | Scikit-learn |
-| Data Preparation | Excel, Python |
-| Documentation | BRD / FRD |
-| Development | Jupyter Notebook, Git, GitHub |
+- **Python** – Pandas, NumPy, Matplotlib, Scikit-learn
+- **SQL / SQLite** – data querying and analysis
+- **Excel** – data preparation and supporting analysis
+- **Power BI** – dashboard and business reporting
+- **Jupyter Notebook** – analysis and model development
+- **Git / GitHub** – version control and project documentation
 
-## Project Workflow
+## Project flow
 
 ```text
-Raw BNPL Dataset
-       |
-       v
-Data Cleaning & Validation
-       |
-       v
-Exploratory Data Analysis
-       |
-       +------> SQL / SQLite Analysis
-       |
-       v
-Feature Engineering
-       |
-       v
+BNPL Dataset
+    ↓
+Data Cleaning
+    ↓
+Exploratory Analysis
+    ↓
+SQL Analysis
+    ↓
+Feature Preparation
+    ↓
 Default Prediction Model
-       |
-       v
+    ↓
 Model Evaluation
-       |
-       +------> Risk Driver Analysis
-       |
-       v
+    ↓
+Risk Driver Analysis
+    ↓
 Power BI Dashboard
-       |
-       v
-Business Recommendations
+    ↓
+Business Insights
 ```
 
-## Key Risk Drivers
+## Some of the findings
 
-The analysis identified several variables with strong influence on predicted default risk, including:
+The variables that stood out in the analysis included:
 
-- **Credit score**
-- **Monthly income**
-- **Debt-to-income ratio**
-- **App usage frequency**
-- **Age**
+- Credit score
+- Monthly income
+- Debt-to-income ratio
+- App usage frequency
+- Age
 
-These variables can be used as inputs for risk segmentation and targeted credit-policy decisions.
+These factors were useful for understanding differences in default risk across customers.
 
-## Model Evaluation
+## Model results
 
-The classification model achieved approximately **60.13% accuracy** in the reported evaluation.
+The model had an overall accuracy of about **60.13%** in the reported evaluation.
 
-For credit-risk applications, accuracy alone is not sufficient. The model was therefore evaluated using a full classification report, with particular attention to **recall for the default class**.
+However, accuracy was not the main metric I focused on. Since the goal is to identify customers who may default, **recall for the default class** is particularly important.
 
-A higher default recall helps reduce the number of customers who are actually likely to default but are incorrectly classified as low risk. This is important because missed high-risk customers can directly contribute to credit losses.
+The reported results for the default class were approximately:
 
-Reported default-class performance included approximately:
+| Metric | Result |
+|---|---:|
+| Precision | 50% |
+| Recall | 88% |
+| F1-score | 64% |
 
-- **Precision:** 50%
-- **Recall:** 88%
-- **F1-score:** 64%
+The high recall means the model was able to identify a large proportion of the customers who actually defaulted. At the same time, the precision shows that some customers predicted as high risk did not actually default.
 
-The model should therefore be interpreted as a risk-screening tool rather than as a standalone approval/rejection mechanism.
+So, the model is better viewed as a **risk-screening aid** rather than something that should make a credit decision on its own.
 
-## Business Insights
+## Power BI dashboard
 
-### 1. Credit score is a major risk indicator
-Customers with weaker credit profiles generally require stronger risk controls and potentially lower exposure limits.
+The dashboard is designed to give a business-level view of the data, including:
 
-### 2. Income and debt burden matter together
-Monthly income provides an indication of repayment capacity, while the debt-to-income ratio provides additional context about existing financial obligations.
+- Customer profile and demographics
+- Default rate
+- Credit-risk patterns
+- Income and debt information
+- Customer behaviour
+- Key risk factors
+- Relevant KPIs
 
-### 3. Behavioral data can add predictive value
-App usage frequency and other behavioral variables can complement traditional financial variables when building customer risk segments.
+The idea is to make the analysis easier for someone who does not need to look through the Python notebook or model output.
 
-### 4. Recall is important for default detection
-In a BNPL risk setting, failing to identify a potential defaulter can be more costly than incorrectly flagging a low-risk customer. Therefore, recall should be considered alongside precision, F1-score, and the business cost of each type of error.
+## Business Analyst work
 
-## Power BI Dashboard
+Along with the technical analysis, I worked on:
 
-The project includes a Power BI-oriented dataset and dashboard deliverables for presenting:
+- Defining the business problem
+- Identifying requirements
+- Preparing BRD and FRD documentation
+- Identifying useful KPIs
+- SQL-based data analysis
+- Dashboard planning
+- Interpreting model results from a business perspective
+- Converting the findings into practical recommendations
 
-- Customer demographics
-- Credit-risk distribution
-- Default patterns
-- Income and debt indicators
-- Customer behavior
-- Risk-driver analysis
-- Business KPIs
+## Files in this repository
 
-The dashboard is intended to help business stakeholders move from raw model output to actionable risk and customer insights.
+The repository contains the analysis notebook, datasets, dashboard-related files and project documentation.
 
-## Business Analyst Deliverables
+## What I would improve next
 
-This project demonstrates Business Analyst skills in addition to technical analytics:
+If I continue working on this project, I would like to:
 
-- Business problem definition
-- Requirement analysis
-- BRD / FRD documentation
-- Data analysis and KPI identification
-- SQL-based analysis
-- Dashboard development
-- Statistical and ML model interpretation
-- Risk and business-impact analysis
-- Converting analytical findings into recommendations
-
-## Repository Contents
-
-The repository contains the project notebook, datasets, dashboard-related files, and project documentation.
-
-## Future Improvements
-
-- Perform hyperparameter tuning and cross-validation.
-- Compare multiple classification algorithms.
-- Apply cost-sensitive learning for default detection.
-- Calibrate predicted probabilities for better risk scoring.
-- Add customer risk bands such as Low, Medium, and High Risk.
-- Integrate model outputs into an automated decision workflow.
-- Add monitoring for model drift and changes in default behavior.
+- Test a few more classification models.
+- Tune the model and compare cross-validation results.
+- Look at the cost of false positives vs. false negatives.
+- Create clear Low / Medium / High risk segments.
+- Calibrate the model's probability scores.
+- Add model monitoring if this were used with real BNPL data.
 
 ## Author
 
-**Sharath C**  
+**Sharath C**
+
 Business Analyst / Engineering Student
 
 GitHub: [06SharXD](https://github.com/06SharXD)
-
----
-
-**Project:** BNPL Credit Risk & Conversion Analytics  
-**Focus:** Business Analytics • Credit Risk • Machine Learning • SQL • Power BI
